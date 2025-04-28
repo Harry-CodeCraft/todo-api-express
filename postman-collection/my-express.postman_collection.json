@@ -1,0 +1,154 @@
+{
+	"info": {
+		"_postman_id": "dffe43e0-e491-4f34-9be4-8a4f15b4a553",
+		"name": "my-express",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Notes",
+			"item": [
+				{
+					"name": "http://localhost:4000/notes/get",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "userId",
+								"value": "66dec36f6f0d8b2235472e01",
+								"type": "default",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZGVjMzZmNmYwZDhiMjIzNTQ3MmUwMSIsIm5hbWUiOiJIYXJzaCBTaW5naCIsImVtYWlsIjoiSGFyc2hAZ21haWwuY29tIiwiaWF0IjoxNzI3MDg4NjQxLCJleHAiOjE3MjcwODk1NDF9.XeP4LqhMMAgCnbCpW8LPJ45pC3OshuwhWAxc8-zpc1Y",
+								"type": "default"
+							}
+						],
+						"url": "http://localhost:4000/notes/get"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:4000/notes/create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {}
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "userId",
+								"value": "66dec36f6f0d8b2235472e01",
+								"type": "default",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZGVjMzZmNmYwZDhiMjIzNTQ3MmUwMSIsIm5hbWUiOiJIYXJzaCBTaW5naCIsImVtYWlsIjoiSGFyc2hAZ21haWwuY29tIiwiaWF0IjoxNzI3MDg4NjQxLCJleHAiOjE3MjcwODk1NDF9.XeP4LqhMMAgCnbCpW8LPJ45pC3OshuwhWAxc8-zpc1Y",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"5th notes\",\n    \"desc\": \"5th notes note created desc\",\n    \"type\": \"to do\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:4000/notes/create"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:4000/notes/delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {}
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "userId",
+								"value": "66dec36f6f0d8b2235472e01",
+								"type": "default",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZGVjMzZmNmYwZDhiMjIzNTQ3MmUwMSIsIm5hbWUiOiJIYXJzaCBTaW5naCIsImVtYWlsIjoiSGFyc2hAZ21haWwuY29tIiwiaWF0IjoxNzI3MDg2NTEwLCJleHAiOjE3MjcwODc0MTB9.95LAPJn9Au1mTuFrZMVs4NOcO-lJ6NkOiZh9Lf3ttGg",
+								"type": "default"
+							}
+						],
+						"url": "http://localhost:4000/notes/delete/"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "http://localhost:4000/auth/login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"Harsh@gmail.com\",\n    \"password\": \"Harsh123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:4000/auth/login"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:4000/auth/register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Harsh Singh\",\n    \"email\": \"Harsh@gmail.com\",\n    \"phone\": 7532007459,\n    \"password\": \"Harsh123\",\n    \"roleType\": \"admin\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:4000/auth/register"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:4000/api/user/all",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZGVjMzZmNmYwZDhiMjIzNTQ3MmUwMSIsIm5hbWUiOiJIYXJzaCBTaW5naCIsImVtYWlsIjoiSGFyc2hAZ21haWwuY29tIiwiaWF0IjoxNzI1ODc5NzE0LCJleHAiOjE3MjU4ODA2MTR9.DBigFKjhT5PQKuNIgTJjDcqZpL08DBaq5tUJIQmtsVU",
+								"type": "default"
+							}
+						],
+						"url": "http://localhost:4000/api/user/all"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
