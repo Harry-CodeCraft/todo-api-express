@@ -53,23 +53,25 @@ async function getAllNotesByUserId(
   req: { headers: ReqtHeadersType; query: ReqtParamsType },
   res: any
 ) {
-  const { skip, limit } = req.query!;
+  let { page, count } = req.query!;
+  page = +page! || 1;
+  count = +count! || 10;
   const decodedToken: JwtDecodeType = decodeJwtToken(req.headers.authorization);
-  const skipped = Number(skip === 0 ? 1 : skip - 1) * 20;
+  const skipped = Number(page === 0 ? 1 : page - 1) * count!;
   try {
     const data = await Notes.find({ userId: decodedToken.id })
       .sort({
         createdDate: -1,
       })
       .skip(skipped)
-      .limit(Number(limit));
+      .limit(Number(count));
     const userData = await User.findById(decodedToken.id);
     if (skipped + data.length > (userData?.totalNotesCount ?? 0)) {
       return res.status(401).json({
         response: {
           code: 401,
-          page: skip,
-          limit,
+          page,
+          limit: count,
           totalNotes: userData?.totalNotesCount || null,
           message: [`Invalid skip or limit!`, `You reached the end of notes!`],
         },
@@ -78,8 +80,8 @@ async function getAllNotesByUserId(
     res.status(200).json({
       response: { code: 200, message: "Successfully reterived user notes!" },
       data,
-      page: skip,
-      limit,
+      page,
+      limit: count,
       totalNotes: userData?.totalNotesCount || null,
     });
   } catch (error) {

@@ -22,8 +22,8 @@ interface LogoutReqtHeadersType {
 }
 interface ReqtParamsType {
   noteid?: string;
-  skip: number;
-  limit: number;
+  page: number;
+  count: number;
 }
 
 export { INotesType, ReqtHeadersType, ReqtParamsType, LogoutReqtHeadersType };
