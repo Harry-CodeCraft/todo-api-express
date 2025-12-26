@@ -1,19 +1,19 @@
 {
 	"info": {
-		"_postman_id": "dffe43e0-e491-4f34-9be4-8a4f15b4a553",
+		"_postman_id": "3473f39a-2115-4a12-b498-f76cfa924ccb",
 		"name": "my-express",
-		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17698908"
 	},
 	"item": [
 		{
 			"name": "Notes",
 			"item": [
 				{
-					"name": "http://localhost:4000/notes/get",
+					"name": "get all",
 					"request": {
 						"auth": {
-							"type": "bearer",
-							"bearer": {}
+							"type": "bearer"
 						},
 						"method": "GET",
 						"header": [
@@ -26,19 +26,43 @@
 							{
 								"key": "Authorization",
 								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZGVjMzZmNmYwZDhiMjIzNTQ3MmUwMSIsIm5hbWUiOiJIYXJzaCBTaW5naCIsImVtYWlsIjoiSGFyc2hAZ21haWwuY29tIiwiaWF0IjoxNzI3MDg4NjQxLCJleHAiOjE3MjcwODk1NDF9.XeP4LqhMMAgCnbCpW8LPJ45pC3OshuwhWAxc8-zpc1Y",
-								"type": "default"
+								"type": "default",
+								"disabled": true
+							},
+							{
+								"key": "sessionid",
+								"value": "76a05dbb79039ee95c413defd3fdf397",
+								"type": "text"
 							}
 						],
-						"url": "http://localhost:4000/notes/get"
+						"url": {
+							"raw": "{{baseURL}}/notes/all?page=1&count=10",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"notes",
+								"all"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "count",
+									"value": "10"
+								}
+							]
+						}
 					},
 					"response": []
 				},
 				{
-					"name": "http://localhost:4000/notes/create",
+					"name": "create",
 					"request": {
 						"auth": {
-							"type": "bearer",
-							"bearer": {}
+							"type": "bearer"
 						},
 						"method": "POST",
 						"header": [
@@ -63,16 +87,24 @@
 								}
 							}
 						},
-						"url": "http://localhost:4000/notes/create"
+						"url": {
+							"raw": "{{baseURL}}/notes/create",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"notes",
+								"create"
+							]
+						}
 					},
 					"response": []
 				},
 				{
-					"name": "http://localhost:4000/notes/delete",
+					"name": "delete",
 					"request": {
 						"auth": {
-							"type": "bearer",
-							"bearer": {}
+							"type": "bearer"
 						},
 						"method": "DELETE",
 						"header": [
@@ -88,7 +120,109 @@
 								"type": "default"
 							}
 						],
-						"url": "http://localhost:4000/notes/delete/"
+						"url": {
+							"raw": "{{baseURL}}/notes/delete/",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"notes",
+								"delete",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "download note file",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "noteid",
+								"value": "680fb1f80f5d71f864d7f11b",
+								"type": "text"
+							},
+							{
+								"key": "sessionid",
+								"value": "76a05dbb79039ee95c413defd3fdf397",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"harsh@gmail.com\",\n    \"password\": \"Harsh123\"\n}"
+						},
+						"url": {
+							"raw": "{{baseURL}}/notes/file/download",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"notes",
+								"file",
+								"download"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "excel-bulk notes",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "noteid",
+								"value": "680fb1f80f5d71f864d7f11b",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "sessionid",
+								"value": "17f2863fc19cad261f9b553dcd5ecfcb",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/Users/harshsingh/Downloads/Data Preview Table with all 100 data.xlsx"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/notes/file/upload/csv-bulk",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"notes",
+								"file",
+								"upload",
+								"csv-bulk"
+							],
+							"query": [
+								{
+									"key": "sessionid",
+									"value": "05eeb716392b39f06425f1c73d45a539",
+									"disabled": true
+								}
+							]
+						}
 					},
 					"response": []
 				}
@@ -98,20 +232,31 @@
 			"name": "Auth",
 			"item": [
 				{
-					"name": "http://localhost:4000/auth/login",
+					"name": "lgoin",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\": \"Harsh@gmail.com\",\n    \"password\": \"Harsh123\"\n}",
+							"raw": "{\n    \"email\": \"harsh@gmail.com\",\n    \"password\": \"Harsh123\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": "http://localhost:4000/auth/login"
+						"url": {
+							"raw": "http://localhost:4000/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
 					},
 					"response": []
 				},
@@ -129,7 +274,16 @@
 								}
 							}
 						},
-						"url": "http://localhost:4000/auth/register"
+						"url": {
+							"raw": "{{baseURL}}/auth/register",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
 					},
 					"response": []
 				},
@@ -144,11 +298,28 @@
 								"type": "default"
 							}
 						],
-						"url": "http://localhost:4000/api/user/all"
+						"url": {
+							"raw": "{{baseURL}}/api/user/all",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"all"
+							]
+						}
 					},
 					"response": []
 				}
 			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": "",
+			"type": "default"
 		}
 	]
 }
