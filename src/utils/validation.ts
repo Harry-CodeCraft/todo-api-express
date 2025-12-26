@@ -49,6 +49,7 @@ function getSessionFromRedis(req: any, res: any, next: any) {
       });
     } else {
       req.headers["authorization"] = JSON.parse(data).jwtToken;
+      req.headers["userid"] = JSON.parse(data).id;
       next();
     }
   });

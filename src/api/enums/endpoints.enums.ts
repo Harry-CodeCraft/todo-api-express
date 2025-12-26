@@ -21,6 +21,7 @@ enum NotesEndPoints {
 }
 enum FileEndPoints {
   GET_FILE = "/file/download",
+  CSV_UPLOAD_BULK = "/file/upload/csv-bulk",
 }
 
 export { UserEndPoints, AuthEndPoints, NotesEndPoints, FileEndPoints };

@@ -1,11 +1,11 @@
 import { Router } from "express";
-import { UserEndPoints } from "../../api/enums/endpoints.enums";
-import { validateToken } from "../../utils/validate-token";
+import { UserEndPoints } from "../api/enums/endpoints.enums";
+import { validateToken } from "../utils/validate-token";
 import {
   deleteUser,
   getUser,
   getUserById,
-} from "../../controller/user.controller";
+} from "../controller/user.controller";
 
 const router = Router();
 router.get(UserEndPoints.GET_ALL, validateToken, getUser);

@@ -1,10 +1,10 @@
 import { Router } from "express";
-import { AuthEndPoints } from "../../api/enums/endpoints.enums.js";
-import { loginUser, registerUser } from "../../controller/auth-controller.js";
+import { AuthEndPoints } from "../api/enums/endpoints.enums.js";
+import { loginUser, registerUser } from "../controller/auth-controller.js";
 import {
   userLoginValidation,
   userPayloadValidation,
-} from "../../utils/validation.js";
+} from "../utils/validation.js";
 
 const router = Router();
 

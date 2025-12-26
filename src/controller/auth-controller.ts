@@ -35,6 +35,9 @@ async function loginUser(req: { body: UserBodyType }, res: any) {
       id: validUser._id,
       name: validUser.name,
       email: validUser.email,
+      phone: validUser.phone,
+      uuid: validUser.uuid,
+      totalNotesCount: validUser.totalNotesCount || 0,
     };
     const jwtToken = sign(tokenObj, envr.SERVER_SECRET || "", {
       expiresIn: envr.TOKEN_EXPIRY_TIME_IN_MINUTES,

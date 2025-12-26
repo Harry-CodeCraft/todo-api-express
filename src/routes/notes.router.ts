@@ -1,14 +1,17 @@
 import { Router } from "express";
-import { FileEndPoints, NotesEndPoints } from "../../api/enums/endpoints.enums";
-import { validateToken } from "../../utils/validate-token";
+import { FileEndPoints, NotesEndPoints } from "../api/enums/endpoints.enums";
+import { validateToken } from "../utils/validate-token";
 import {
   createNote,
   deleteNotes,
   getAllNotesByUserId,
-} from "../../controller/notes.controller";
-import { getSessionFromRedis } from "../../utils/validation";
+} from "../controller/notesController/notes.controller";
+import { getSessionFromRedis } from "../utils/validation";
 import multer from "multer";
-import { downloadNoteFile } from "../../controller/file.controller";
+import {
+  downloadNoteFile,
+  notesBulkUpload,
+} from "../controller/file.controller";
 
 const router = Router();
 const storage = multer.memoryStorage();
@@ -46,6 +49,13 @@ router.get(
   getSessionFromRedis,
   validateToken,
   downloadNoteFile
+);
+router.post(
+  FileEndPoints.CSV_UPLOAD_BULK,
+  getSessionFromRedis,
+  validateToken,
+  upload.single("file"),
+  notesBulkUpload
 );
 
 export { router as NotesRouter };

@@ -4,10 +4,10 @@ import cors from "cors";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 
-import { authRouter } from "./mongoose/routes/auth.router.js";
-import { UserRouter } from "./mongoose/routes/user.router.js";
-import { NotesRouter } from "./mongoose/routes/notes.router.js";
-import { logoutRouter } from "./mongoose/routes/logout.router.js";
+import { authRouter } from "./routes/auth.router.js";
+import { UserRouter } from "./routes/user.router.js";
+import { NotesRouter } from "./routes/notes.router.js";
+import { logoutRouter } from "./routes/logout.router.js";
 
 dotenv.config();
 

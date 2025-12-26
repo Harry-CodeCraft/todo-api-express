@@ -1,9 +1,10 @@
-import { ReqtHeadersType, INotesType, ReqtParamsType } from "../type/notes";
-import { Notes } from "../mongoose/models/notes.model";
-import { User } from "../mongoose/models/user.model";
-import { JwtDecodeType } from "../type/user";
-import { decodeJwtToken } from "../utils/validate-token";
-import { handleFileUpload } from "../utils/upload-file";
+import { ReqtHeadersType, INotesType, ReqtParamsType } from "../../type/notes";
+import { Notes } from "../../mongoose/models/notes.model";
+import { User } from "../../mongoose/models/user.model";
+import { JwtDecodeType } from "../../type/user";
+import { decodeJwtToken } from "../../utils/validate-token";
+import { handleFileUpload } from "../../utils/upload-file";
+import { updateNotesCount } from "./notesControllerHelper";
 
 // Create Notes
 async function createNote(
@@ -27,11 +28,11 @@ async function createNote(
     const noteCount =
       (await Notes.find({ userId: decodedToken.id })).length ?? 0;
     await User.findByIdAndUpdate(decodedToken.id, {
-      totalNotesCount: noteCount + 1,
+      totalNotesCount: noteCount,
     });
     return res.status(201).json({
       response: { code: 201, message: "Successfully Created Note!" },
-      totalNotes: noteCount + 1,
+      totalNotes: noteCount,
       data,
     });
   } catch (error) {
